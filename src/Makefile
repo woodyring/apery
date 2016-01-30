@@ -1,7 +1,9 @@
 COMPILER = g++
 #COMPILER = mpicxx
-CFLAGS   = -std=c++11 -fno-exceptions -fno-rtti -Wextra -Ofast -MMD -MP -fopenmp
+CFLAGS   = -std=c++11 -fno-exceptions -fno-rtti -Wextra -MMD -MP -fopenmp
 CFLAGS   += -march=native
+#CFLAGS   += -DNDEBUG -Ofast -g
+CFLAGS   += -O0 -g
 LDFLAGS  = -lpthread #-lboost_mpi -lboost_serialization
 LIBS     =
 INCLUDE  = #-I../include
@@ -33,19 +35,19 @@ $(OBJDIR)/%.o: %.cpp
 all: clean $(TARGET)
 
 bmi2:
-	$(MAKE) CFLAGS='$(CFLAGS) -DNDEBUG -DHAVE_SSE4 -DHAVE_SSE42 -DHAVE_BMI2 -msse4.2 -mbmi2 -DHAVE_AVX2 -mavx2' LDFLAGS='$(LDFLAGS) -flto' $(TARGET)
+	$(MAKE) CFLAGS='$(CFLAGS) -DHAVE_SSE4 -DHAVE_SSE42 -DHAVE_BMI2 -msse4.2 -mbmi2 -DHAVE_AVX2 -mavx2' LDFLAGS='$(LDFLAGS) -flto' $(TARGET)
 
 sse:
-	$(MAKE) CFLAGS='$(CFLAGS) -DNDEBUG -DHAVE_SSE4 -DHAVE_SSE42 -msse4.2' LDFLAGS='$(LDFLAGS) -flto' $(TARGET)
+	$(MAKE) CFLAGS='$(CFLAGS) -DHAVE_SSE4 -DHAVE_SSE42 -msse4.2' LDFLAGS='$(LDFLAGS) -flto' $(TARGET)
 
 sse41:
-	$(MAKE) CFLAGS='$(CFLAGS) -DNDEBUG -DHAVE_SSE4 -msse4.1' LDFLAGS='$(LDFLAGS) -flto' $(TARGET)
+	$(MAKE) CFLAGS='$(CFLAGS) -DHAVE_SSE4 -msse4.1' LDFLAGS='$(LDFLAGS) -flto' $(TARGET)
 
 sse2:
-	$(MAKE) CFLAGS='$(CFLAGS) -DNDEBUG -DHAVE_SSE2 -msse2' LDFLAGS='$(LDFLAGS) -flto' $(TARGET)
+	$(MAKE) CFLAGS='$(CFLAGS) -DHAVE_SSE2 -msse2' LDFLAGS='$(LDFLAGS) -flto' $(TARGET)
 
 nosse:
-	$(MAKE) CFLAGS='$(CFLAGS) -DNDEBUG' LDFLAGS='$(LDFLAGS) -flto' $(TARGET)
+	$(MAKE) CFLAGS='$(CFLAGS)' LDFLAGS='$(LDFLAGS) -flto' $(TARGET)
 
 prof:
 	$(MAKE) CFLAGS='$(CFLAGS) -pg' bmi2
