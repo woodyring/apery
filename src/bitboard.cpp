@@ -212,6 +212,26 @@ const u64 BishopMagic[SquareNum] = {
 };
 #endif
 
+const Bitboard InFrontOfRank1Black = allZeroBB();
+const Bitboard InFrontOfRank2Black = rankMask<Rank1>();
+const Bitboard InFrontOfRank3Black = InFrontOfRank2Black | rankMask<Rank2>();
+const Bitboard InFrontOfRank4Black = InFrontOfRank3Black | rankMask<Rank3>();
+const Bitboard InFrontOfRank5Black = InFrontOfRank4Black | rankMask<Rank4>();
+const Bitboard InFrontOfRank6Black = InFrontOfRank5Black | rankMask<Rank5>();
+const Bitboard InFrontOfRank7Black = InFrontOfRank6Black | rankMask<Rank6>();
+const Bitboard InFrontOfRank8Black = InFrontOfRank7Black | rankMask<Rank7>();
+const Bitboard InFrontOfRank9Black = InFrontOfRank8Black | rankMask<Rank8>();
+
+const Bitboard InFrontOfRank9White = allZeroBB();
+const Bitboard InFrontOfRank8White = rankMask<Rank9>();
+const Bitboard InFrontOfRank7White = InFrontOfRank8White | rankMask<Rank8>();
+const Bitboard InFrontOfRank6White = InFrontOfRank7White | rankMask<Rank7>();
+const Bitboard InFrontOfRank5White = InFrontOfRank6White | rankMask<Rank6>();
+const Bitboard InFrontOfRank4White = InFrontOfRank5White | rankMask<Rank5>();
+const Bitboard InFrontOfRank3White = InFrontOfRank4White | rankMask<Rank4>();
+const Bitboard InFrontOfRank2White = InFrontOfRank3White | rankMask<Rank3>();
+const Bitboard InFrontOfRank1White = InFrontOfRank2White | rankMask<Rank2>();
+
 const Bitboard FileMask[FileNum] = {
 	File1Mask, File2Mask, File3Mask, File4Mask, File5Mask, File6Mask, File7Mask, File8Mask, File9Mask
 };

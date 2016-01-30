@@ -322,25 +322,25 @@ inline Bitboard squareRankMask(const Square sq) {
 	return rankMask(r);
 }
 
-const Bitboard InFrontOfRank1Black = allZeroBB();
-const Bitboard InFrontOfRank2Black = rankMask<Rank1>();
-const Bitboard InFrontOfRank3Black = InFrontOfRank2Black | rankMask<Rank2>();
-const Bitboard InFrontOfRank4Black = InFrontOfRank3Black | rankMask<Rank3>();
-const Bitboard InFrontOfRank5Black = InFrontOfRank4Black | rankMask<Rank4>();
-const Bitboard InFrontOfRank6Black = InFrontOfRank5Black | rankMask<Rank5>();
-const Bitboard InFrontOfRank7Black = InFrontOfRank6Black | rankMask<Rank6>();
-const Bitboard InFrontOfRank8Black = InFrontOfRank7Black | rankMask<Rank7>();
-const Bitboard InFrontOfRank9Black = InFrontOfRank8Black | rankMask<Rank8>();
+extern const Bitboard InFrontOfRank1Black;
+extern const Bitboard InFrontOfRank2Black;
+extern const Bitboard InFrontOfRank3Black;
+extern const Bitboard InFrontOfRank4Black;
+extern const Bitboard InFrontOfRank5Black;
+extern const Bitboard InFrontOfRank6Black;
+extern const Bitboard InFrontOfRank7Black;
+extern const Bitboard InFrontOfRank8Black;
+extern const Bitboard InFrontOfRank9Black;
 
-const Bitboard InFrontOfRank9White = allZeroBB();
-const Bitboard InFrontOfRank8White = rankMask<Rank9>();
-const Bitboard InFrontOfRank7White = InFrontOfRank8White | rankMask<Rank8>();
-const Bitboard InFrontOfRank6White = InFrontOfRank7White | rankMask<Rank7>();
-const Bitboard InFrontOfRank5White = InFrontOfRank6White | rankMask<Rank6>();
-const Bitboard InFrontOfRank4White = InFrontOfRank5White | rankMask<Rank5>();
-const Bitboard InFrontOfRank3White = InFrontOfRank4White | rankMask<Rank4>();
-const Bitboard InFrontOfRank2White = InFrontOfRank3White | rankMask<Rank3>();
-const Bitboard InFrontOfRank1White = InFrontOfRank2White | rankMask<Rank2>();
+extern const Bitboard InFrontOfRank9White;
+extern const Bitboard InFrontOfRank8White;
+extern const Bitboard InFrontOfRank7White;
+extern const Bitboard InFrontOfRank6White;
+extern const Bitboard InFrontOfRank5White;
+extern const Bitboard InFrontOfRank4White;
+extern const Bitboard InFrontOfRank3White;
+extern const Bitboard InFrontOfRank2White;
+extern const Bitboard InFrontOfRank1White;
 
 inline Bitboard inFrontMask(const Color c, const Rank r) { return InFrontMask[c][r]; }
 template <Color C, Rank R> inline Bitboard inFrontMask() {
