@@ -246,37 +246,27 @@ extern const u64 BishopMagic[SquareNum];
 
 // 指定した位置の属する file の bit を shift し、
 // index を求める為に使用する。
-const int Slide[SquareNum] = {
-	1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 ,
-	10, 10, 10, 10, 10, 10, 10, 10, 10,
-	19, 19, 19, 19, 19, 19, 19, 19, 19,
-	28, 28, 28, 28, 28, 28, 28, 28, 28,
-	37, 37, 37, 37, 37, 37, 37, 37, 37,
-	46, 46, 46, 46, 46, 46, 46, 46, 46,
-	55, 55, 55, 55, 55, 55, 55, 55, 55,
-	1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 ,
-	10, 10, 10, 10, 10, 10, 10, 10, 10
-};
+extern const int Slide[SquareNum];
 
-const Bitboard File1Mask = Bitboard(UINT64_C(0x1ff) << (9 * 0), 0);
-const Bitboard File2Mask = Bitboard(UINT64_C(0x1ff) << (9 * 1), 0);
-const Bitboard File3Mask = Bitboard(UINT64_C(0x1ff) << (9 * 2), 0);
-const Bitboard File4Mask = Bitboard(UINT64_C(0x1ff) << (9 * 3), 0);
-const Bitboard File5Mask = Bitboard(UINT64_C(0x1ff) << (9 * 4), 0);
-const Bitboard File6Mask = Bitboard(UINT64_C(0x1ff) << (9 * 5), 0);
-const Bitboard File7Mask = Bitboard(UINT64_C(0x1ff) << (9 * 6), 0);
-const Bitboard File8Mask = Bitboard(0, 0x1ff << (9 * 0));
-const Bitboard File9Mask = Bitboard(0, 0x1ff << (9 * 1));
+extern const Bitboard File1Mask;
+extern const Bitboard File2Mask;
+extern const Bitboard File3Mask;
+extern const Bitboard File4Mask;
+extern const Bitboard File5Mask;
+extern const Bitboard File6Mask;
+extern const Bitboard File7Mask;
+extern const Bitboard File8Mask;
+extern const Bitboard File9Mask;
 
-const Bitboard Rank1Mask = Bitboard(UINT64_C(0x40201008040201) << 0, 0x201 << 0);
-const Bitboard Rank2Mask = Bitboard(UINT64_C(0x40201008040201) << 1, 0x201 << 1);
-const Bitboard Rank3Mask = Bitboard(UINT64_C(0x40201008040201) << 2, 0x201 << 2);
-const Bitboard Rank4Mask = Bitboard(UINT64_C(0x40201008040201) << 3, 0x201 << 3);
-const Bitboard Rank5Mask = Bitboard(UINT64_C(0x40201008040201) << 4, 0x201 << 4);
-const Bitboard Rank6Mask = Bitboard(UINT64_C(0x40201008040201) << 5, 0x201 << 5);
-const Bitboard Rank7Mask = Bitboard(UINT64_C(0x40201008040201) << 6, 0x201 << 6);
-const Bitboard Rank8Mask = Bitboard(UINT64_C(0x40201008040201) << 7, 0x201 << 7);
-const Bitboard Rank9Mask = Bitboard(UINT64_C(0x40201008040201) << 8, 0x201 << 8);
+extern const Bitboard Rank1Mask;
+extern const Bitboard Rank2Mask;
+extern const Bitboard Rank3Mask;
+extern const Bitboard Rank4Mask;
+extern const Bitboard Rank5Mask;
+extern const Bitboard Rank6Mask;
+extern const Bitboard Rank7Mask;
+extern const Bitboard Rank8Mask;
+extern const Bitboard Rank9Mask;
 
 extern const Bitboard FileMask[FileNum];
 extern const Bitboard RankMask[RankNum];
