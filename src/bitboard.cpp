@@ -1,6 +1,9 @@
 #include "common.hpp"
 #include "bitboard.hpp"
 
+#define INIT_PRIO(x) __attribute__((init_priority(x)))
+
+
 const Bitboard SetMaskBB[SquareNum] = {
 	Bitboard(UINT64_C(1) <<  0,                 0),  // 0 , SQ11
 	Bitboard(UINT64_C(1) <<  1,                 0),  // 1 , SQ12
@@ -226,55 +229,55 @@ const int Slide[SquareNum] = {
 	10, 10, 10, 10, 10, 10, 10, 10, 10
 };
 
-const Bitboard File1Mask = Bitboard(UINT64_C(0x1ff) << (9 * 0), 0);
-const Bitboard File2Mask = Bitboard(UINT64_C(0x1ff) << (9 * 1), 0);
-const Bitboard File3Mask = Bitboard(UINT64_C(0x1ff) << (9 * 2), 0);
-const Bitboard File4Mask = Bitboard(UINT64_C(0x1ff) << (9 * 3), 0);
-const Bitboard File5Mask = Bitboard(UINT64_C(0x1ff) << (9 * 4), 0);
-const Bitboard File6Mask = Bitboard(UINT64_C(0x1ff) << (9 * 5), 0);
-const Bitboard File7Mask = Bitboard(UINT64_C(0x1ff) << (9 * 6), 0);
-const Bitboard File8Mask = Bitboard(0, 0x1ff << (9 * 0));
-const Bitboard File9Mask = Bitboard(0, 0x1ff << (9 * 1));
+const Bitboard File1Mask INIT_PRIO(101) = Bitboard(UINT64_C(0x1ff) << (9 * 0), 0);
+const Bitboard File2Mask INIT_PRIO(102) = Bitboard(UINT64_C(0x1ff) << (9 * 1), 0);
+const Bitboard File3Mask INIT_PRIO(103) = Bitboard(UINT64_C(0x1ff) << (9 * 2), 0);
+const Bitboard File4Mask INIT_PRIO(104) = Bitboard(UINT64_C(0x1ff) << (9 * 3), 0);
+const Bitboard File5Mask INIT_PRIO(105) = Bitboard(UINT64_C(0x1ff) << (9 * 4), 0);
+const Bitboard File6Mask INIT_PRIO(106) = Bitboard(UINT64_C(0x1ff) << (9 * 5), 0);
+const Bitboard File7Mask INIT_PRIO(107) = Bitboard(UINT64_C(0x1ff) << (9 * 6), 0);
+const Bitboard File8Mask INIT_PRIO(108) = Bitboard(0, 0x1ff << (9 * 0));
+const Bitboard File9Mask INIT_PRIO(109) = Bitboard(0, 0x1ff << (9 * 1));
 
-const Bitboard Rank1Mask = Bitboard(UINT64_C(0x40201008040201) << 0, 0x201 << 0);
-const Bitboard Rank2Mask = Bitboard(UINT64_C(0x40201008040201) << 1, 0x201 << 1);
-const Bitboard Rank3Mask = Bitboard(UINT64_C(0x40201008040201) << 2, 0x201 << 2);
-const Bitboard Rank4Mask = Bitboard(UINT64_C(0x40201008040201) << 3, 0x201 << 3);
-const Bitboard Rank5Mask = Bitboard(UINT64_C(0x40201008040201) << 4, 0x201 << 4);
-const Bitboard Rank6Mask = Bitboard(UINT64_C(0x40201008040201) << 5, 0x201 << 5);
-const Bitboard Rank7Mask = Bitboard(UINT64_C(0x40201008040201) << 6, 0x201 << 6);
-const Bitboard Rank8Mask = Bitboard(UINT64_C(0x40201008040201) << 7, 0x201 << 7);
-const Bitboard Rank9Mask = Bitboard(UINT64_C(0x40201008040201) << 8, 0x201 << 8);
+const Bitboard Rank1Mask INIT_PRIO(111) = Bitboard(UINT64_C(0x40201008040201) << 0, 0x201 << 0);
+const Bitboard Rank2Mask INIT_PRIO(112) = Bitboard(UINT64_C(0x40201008040201) << 1, 0x201 << 1);
+const Bitboard Rank3Mask INIT_PRIO(113) = Bitboard(UINT64_C(0x40201008040201) << 2, 0x201 << 2);
+const Bitboard Rank4Mask INIT_PRIO(114) = Bitboard(UINT64_C(0x40201008040201) << 3, 0x201 << 3);
+const Bitboard Rank5Mask INIT_PRIO(115) = Bitboard(UINT64_C(0x40201008040201) << 4, 0x201 << 4);
+const Bitboard Rank6Mask INIT_PRIO(116) = Bitboard(UINT64_C(0x40201008040201) << 5, 0x201 << 5);
+const Bitboard Rank7Mask INIT_PRIO(117) = Bitboard(UINT64_C(0x40201008040201) << 6, 0x201 << 6);
+const Bitboard Rank8Mask INIT_PRIO(118) = Bitboard(UINT64_C(0x40201008040201) << 7, 0x201 << 7);
+const Bitboard Rank9Mask INIT_PRIO(119) = Bitboard(UINT64_C(0x40201008040201) << 8, 0x201 << 8);
 
-const Bitboard InFrontOfRank1Black = allZeroBB();
-const Bitboard InFrontOfRank2Black = rankMask<Rank1>();
-const Bitboard InFrontOfRank3Black = InFrontOfRank2Black | rankMask<Rank2>();
-const Bitboard InFrontOfRank4Black = InFrontOfRank3Black | rankMask<Rank3>();
-const Bitboard InFrontOfRank5Black = InFrontOfRank4Black | rankMask<Rank4>();
-const Bitboard InFrontOfRank6Black = InFrontOfRank5Black | rankMask<Rank5>();
-const Bitboard InFrontOfRank7Black = InFrontOfRank6Black | rankMask<Rank6>();
-const Bitboard InFrontOfRank8Black = InFrontOfRank7Black | rankMask<Rank7>();
-const Bitboard InFrontOfRank9Black = InFrontOfRank8Black | rankMask<Rank8>();
+const Bitboard InFrontOfRank1Black INIT_PRIO(201) = allZeroBB();
+const Bitboard InFrontOfRank2Black INIT_PRIO(202) = rankMask<Rank1>();
+const Bitboard InFrontOfRank3Black INIT_PRIO(203) = InFrontOfRank2Black | rankMask<Rank2>();
+const Bitboard InFrontOfRank4Black INIT_PRIO(204) = InFrontOfRank3Black | rankMask<Rank3>();
+const Bitboard InFrontOfRank5Black INIT_PRIO(205) = InFrontOfRank4Black | rankMask<Rank4>();
+const Bitboard InFrontOfRank6Black INIT_PRIO(206) = InFrontOfRank5Black | rankMask<Rank5>();
+const Bitboard InFrontOfRank7Black INIT_PRIO(207) = InFrontOfRank6Black | rankMask<Rank6>();
+const Bitboard InFrontOfRank8Black INIT_PRIO(208) = InFrontOfRank7Black | rankMask<Rank7>();
+const Bitboard InFrontOfRank9Black INIT_PRIO(209) = InFrontOfRank8Black | rankMask<Rank8>();
 
-const Bitboard InFrontOfRank9White = allZeroBB();
-const Bitboard InFrontOfRank8White = rankMask<Rank9>();
-const Bitboard InFrontOfRank7White = InFrontOfRank8White | rankMask<Rank8>();
-const Bitboard InFrontOfRank6White = InFrontOfRank7White | rankMask<Rank7>();
-const Bitboard InFrontOfRank5White = InFrontOfRank6White | rankMask<Rank6>();
-const Bitboard InFrontOfRank4White = InFrontOfRank5White | rankMask<Rank5>();
-const Bitboard InFrontOfRank3White = InFrontOfRank4White | rankMask<Rank4>();
-const Bitboard InFrontOfRank2White = InFrontOfRank3White | rankMask<Rank3>();
-const Bitboard InFrontOfRank1White = InFrontOfRank2White | rankMask<Rank2>();
+const Bitboard InFrontOfRank9White INIT_PRIO(211) = allZeroBB();
+const Bitboard InFrontOfRank8White INIT_PRIO(212) = rankMask<Rank9>();
+const Bitboard InFrontOfRank7White INIT_PRIO(213) = InFrontOfRank8White | rankMask<Rank8>();
+const Bitboard InFrontOfRank6White INIT_PRIO(214) = InFrontOfRank7White | rankMask<Rank7>();
+const Bitboard InFrontOfRank5White INIT_PRIO(215) = InFrontOfRank6White | rankMask<Rank6>();
+const Bitboard InFrontOfRank4White INIT_PRIO(216) = InFrontOfRank5White | rankMask<Rank5>();
+const Bitboard InFrontOfRank3White INIT_PRIO(217) = InFrontOfRank4White | rankMask<Rank4>();
+const Bitboard InFrontOfRank2White INIT_PRIO(218) = InFrontOfRank3White | rankMask<Rank3>();
+const Bitboard InFrontOfRank1White INIT_PRIO(219) = InFrontOfRank2White | rankMask<Rank2>();
 
-const Bitboard FileMask[FileNum] = {
+const Bitboard FileMask[FileNum] INIT_PRIO(301) = {
 	File1Mask, File2Mask, File3Mask, File4Mask, File5Mask, File6Mask, File7Mask, File8Mask, File9Mask
 };
 
-const Bitboard RankMask[RankNum] = {
+const Bitboard RankMask[RankNum] INIT_PRIO(302) = {
 	Rank1Mask, Rank2Mask, Rank3Mask, Rank4Mask, Rank5Mask, Rank6Mask, Rank7Mask, Rank8Mask, Rank9Mask
 };
 
-const Bitboard InFrontMask[ColorNum][RankNum] = {
+const Bitboard InFrontMask[ColorNum][RankNum] INIT_PRIO(303) = {
 	{ InFrontOfRank1Black, InFrontOfRank2Black, InFrontOfRank3Black, InFrontOfRank4Black, InFrontOfRank5Black, InFrontOfRank6Black, InFrontOfRank7Black, InFrontOfRank8Black, InFrontOfRank9Black },
 	{ InFrontOfRank1White, InFrontOfRank2White, InFrontOfRank3White, InFrontOfRank4White, InFrontOfRank5White, InFrontOfRank6White, InFrontOfRank7White, InFrontOfRank8White, InFrontOfRank9White }
 };
